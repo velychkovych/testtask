@@ -28,16 +28,16 @@ public class MyArrayListImpl implements MyArrayList {
 
     @Override
     public void addElem(String s) {
-        String[] newarray = new String[0];
+        String[] newarray;
         if (size == 0) {
-            newarray = new String[1];
+            this.array = new String[1];
         } else if (size + 1 >= (int) (size * COEFICIENT)) {
             newarray = new String[(int) (size * COEFICIENT) + 1];
+            for (int i = 0; i < this.array.length; ++i) {
+                newarray[i] = this.array[i];
+            }
+            this.array = newarray;
         }
-        for (int i = 0; i < this.array.length; ++i) {
-            newarray[i] = this.array[i];
-        }
-        this.array = newarray;
         this.array[size] = s;
         size++;
     }
